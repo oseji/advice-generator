@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-700;
+}
+
+.container {
+  @apply w-full h-screen mx-auto;
+}
+
+.card {
+  @apply w-96   px-10 py-10 mx-auto mt-20 rounded-lg text-center bg-gray-500;
+}
+
+.heading {
+  @apply text-xl mb-3 font-semibold text-emerald-400 tracking-widest;
+}
+
+.text {
+  @apply h-52 text-center text-2xl font-bold text-white;
+}
+
+.divider {
+  @apply mt-7;
+}
+
+.dice {
+  @apply p-3 w-10 bg-teal-500 rounded-full cursor-pointer;
+}
