@@ -1,35 +1,38 @@
 "use strict";
 
 const dice = document.querySelector(".dice");
-const contaier = document.querySelector(".container");
-console.log(dice, contaier);
+const text = document.querySelector(".text");
+const heading = document.querySelector(".heading");
+let numberID;
 
-const link = "https://api.adviceslip.com/advice";
+console.log(dice, text);
 
-const request = new XMLHttpRequest();
-request.open("get", link);
-request.send();
-console.log(request);
+const randomAdviceGenerator = function (id) {
+  const adviceRequest = new XMLHttpRequest();
+  adviceRequest.open("get", `https://api.adviceslip.com/advice/${id}`);
+  adviceRequest.send();
 
-request.addEventListener("load", function () {
-  console.log(this.responseText);
-  const data = JSON.parse(this.responseText);
-  console.log(data);
+  adviceRequest.addEventListener("load", function () {
+    const adviceData = JSON.parse(this.responseText);
+    console.log(adviceData);
 
-  const html = `
-  <div class="card">
-        <h1 class="heading">ADVICE #${data.slip.id}</h1>
-        <p class="text">${data.slip.advice}</p>
-        <img
-          src="images/pattern-divider-desktop.svg"
-          alt="pattern-divider"
-          class="divider"
-        />
-      </div>
-      <div class="dice">
-        <img src="images/icon-dice.svg" alt="icon-dices" />
-      </div>
+    const advice = `
+    ${adviceData.slip.advice}    
   `;
+    const adviceTag = `ADVICE #${adviceData.slip.id}    
+  `;
+    text.textContent = advice;
+    heading.textContent = adviceTag;
+  });
+};
 
-  contaier.insertAdjacentHTML("beforeend", html);
+dice.addEventListener("click", function (e) {
+  const randomNumber = function (min, max) {
+    const number = Math.trunc(Math.random() * (max - min) + 1) + min;
+    console.log(number);
+    return number;
+  };
+  randomNumber(0, 200);
+
+  randomAdviceGenerator(randomNumber(0, 200));
 });
