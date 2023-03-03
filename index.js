@@ -17,13 +17,9 @@ const randomAdviceGenerator = function (id) {
     const adviceData = JSON.parse(this.responseText);
     console.log(adviceData);
 
-    const advice = `
-    ${adviceData.slip.advice}    
-  `;
-    const adviceTag = `ADVICE #${adviceData.slip.id}    
-  `;
-    text.textContent = advice;
-    heading.textContent = adviceTag;
+    text.textContent = `${adviceData.slip.advice}`;
+    heading.textContent = `ADVICE #${adviceData.slip.id}    
+    `;
   });
 };
 
