@@ -7,6 +7,7 @@ let numberID;
 
 console.log(dice, text);
 
+//FUNCTION TO GENERATE ADVICE TEXT & ID
 const randomAdviceGenerator = function (id) {
   const adviceRequest = new XMLHttpRequest();
   adviceRequest.open("get", `https://api.adviceslip.com/advice/${id}`);
@@ -26,13 +27,15 @@ const randomAdviceGenerator = function (id) {
   });
 };
 
-dice.addEventListener("click", function (e) {
-  const randomNumber = function (min, max) {
-    const number = Math.trunc(Math.random() * (max - min) + 1) + min;
-    console.log(number);
-    return number;
-  };
-  randomNumber(0, 200);
+//FUNCTION TO GENERATE A RANDOM NUMBER BETWEEN A CERTAIN RANGE
+const randomNumber = function (min, max) {
+  const number = Math.trunc(Math.random() * (max - min) + 1) + min;
+  console.log(number);
+  return number;
+};
 
+//DICE CLICK TO GENERATE NEW QUOTE
+dice.addEventListener("click", function () {
+  randomNumber(0, 200);
   randomAdviceGenerator(randomNumber(0, 200));
 });

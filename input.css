@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    font-family: "Tilt Neon", cursive;
-  }
-}
-
 body {
   @apply w-full bg-gray-700;
 }
